@@ -29,6 +29,10 @@ module Hakari
 
     def configuration
       @_configuration ||= Configuration.new(
+        client_id: ENV["HAKARI_CLIENT_ID"],
+        redirect_uri: ENV["HAKARI_REDIRECT_URI"],
+        authorization_url: ENV["HAKARI_AUTHORIZATION_URL"],
+        oauth_provider_url: ENV["HAKARI_OAUTH_PROVIDER_URL"],
       )
     end
 
@@ -38,6 +42,10 @@ module Hakari
 
     def storage
       @_storage ||= Storage.new
+    end
+
+    def storage=(storage)
+      @_storage = storage
     end
   end
 end

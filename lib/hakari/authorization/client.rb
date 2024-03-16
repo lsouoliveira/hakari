@@ -28,7 +28,7 @@ module Hakari
           },
         )
 
-        raise FailedToExchangeAuthorizationCodeError unless request.code == "200"
+        raise FailedToExchangeAuthorizationCodeError, request.body unless request.code == "200"
 
         parse_response(request)
       end
@@ -46,7 +46,7 @@ module Hakari
           },
         )
 
-        raise FailedToRetrieveUserTokenInfoError unless request.code == "200"
+        raise FailedToRetrieveUserTokenInfoError, request.body unless request.code == "200"
 
         parse_response(request)
       end

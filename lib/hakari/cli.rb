@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "core/commands/login"
-require_relative "core/commands/whoami"
-require_relative "core/commands/logout"
 
 module Hakari
   class CLI < Thor
@@ -17,6 +15,11 @@ module Hakari
       EOF
       puts art.bold
       log("#{"Version:".colorize(:green).bold}: #{Hakari::VERSION}")
+    end
+
+    desc "login", "Login to Hakari"
+    def login
+      Hakari::Core::Commands::Login.new.run
     end
   end
 end
