@@ -9,7 +9,7 @@ RSpec.describe(Hakari::Api::Theme) do
         base_url: "http://example.com",
         access_token: "123",
       )
-      theme = Hakari::Api::Theme.new(client)
+      theme = Hakari::Api::Themes.new(client)
       dummy_response = [
         build_theme(name: "theme1"),
         build_theme(name: "theme2"),
@@ -33,7 +33,7 @@ RSpec.describe(Hakari::Api::Theme) do
         access_token: "123",
       )
 
-      theme = Hakari::Api::Theme.new(client)
+      theme = Hakari::Api::Themes.new(client)
 
       stub_request(:get, "http://example.com/themes/123")
         .to_return(status: 200, body: File.read("spec/fixtures/theme.zip"))

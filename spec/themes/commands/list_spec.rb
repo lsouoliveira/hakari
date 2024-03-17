@@ -12,7 +12,7 @@ RSpec.describe(Hakari::Themes::Commands::List) do
         build_theme(name: "theme2"),
       ])
 
-      allow_any_instance_of(Hakari::Api::Theme)
+      allow_any_instance_of(Hakari::Api::Themes)
         .to(receive(:list)
         .and_return(themes))
 

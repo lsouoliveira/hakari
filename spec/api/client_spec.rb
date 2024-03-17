@@ -21,7 +21,7 @@ RSpec.describe(Hakari::Api::Client) do
         access_token: "123",
       )
 
-      expect(client.themes).to(be_a(Hakari::Api::Theme))
+      expect(client.themes).to(be_a(Hakari::Api::Themes))
     end
   end
 end

@@ -2,10 +2,10 @@
 
 module Hakari
   module Api
-    class Theme < Resource
+    class Themes < Resource
       def list
         response = get("themes")
-        parse_collection(response)
+        Collection.from_response(response, Theme)
       end
 
       def pull(theme_id, progress_proc = nil)

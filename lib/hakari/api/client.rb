@@ -13,7 +13,7 @@ module Hakari
       end
 
       def themes
-        @_themes ||= Theme.new(self)
+        @_themes ||= Themes.new(self)
       end
 
       def connection

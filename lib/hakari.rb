@@ -24,7 +24,10 @@ require_relative "hakari/authorization/server"
 require_relative "hakari/authorization/client"
 require_relative "hakari/api/client"
 require_relative "hakari/api/resource"
-require_relative "hakari/api/theme"
+require_relative "hakari/api/collection"
+require_relative "hakari/api/object"
+require_relative "hakari/api/resources/themes"
+require_relative "hakari/api/objects/theme"
 
 module Hakari
   class << self
