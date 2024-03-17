@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 require_relative "core/commands/login"
+require_relative "themes/cli"
 
 module Hakari
   class CLI < Thor
+    desc "themes SUBCOMMAND ...ARGS", "Manage themes"
+    subcommand "themes", Hakari::Themes::CLI
+
     desc "version", "Prints the version"
     def version
       art = <<~'EOF'
