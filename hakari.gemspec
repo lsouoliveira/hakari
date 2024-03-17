@@ -33,7 +33,11 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency("colorize", "~> 1.1")
-  spec.add_dependency("launchy", "~> 3.0")
-  spec.add_dependency("thor", "~> 1.3.1")
+  spec.add_dependency("down", "~> 5.4.1")
   spec.add_dependency("faraday", "~> 2.9.0")
+  spec.add_dependency("launchy", "~> 3.0")
+  spec.add_dependency("rubyzip", "~> 2.3.2")
+  spec.add_dependency("thor", "~> 1.3.1")
+  spec.add_dependency("tty-progressbar", "~> 0.18.2")
+  spec.add_dependency("tty-prompt", "~> 0.23.1")
 end

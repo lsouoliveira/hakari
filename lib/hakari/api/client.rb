@@ -3,6 +3,8 @@
 module Hakari
   module Api
     class Client
+      attr_reader :base_url, :access_token
+
       def initialize(base_url:, access_token:)
         @base_url = base_url
         @access_token = access_token

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require "down"
+require "zip"
+require "tty-progressbar"
+require "tty-prompt"
 require "faraday"
 require "colorize"
 require "launchy"
@@ -7,6 +11,7 @@ require "cgi"
 require "socket"
 require "thor"
 require "securerandom"
+require "pastel"
 
 require_relative "hakari/version"
 require_relative "hakari/error"

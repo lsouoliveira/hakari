@@ -2,11 +2,11 @@
 
 module Hakari
   class Configuration
-    attr_accessor :client_id, 
-                  :redirect_uri, 
-                  :authorization_url, 
-                  :oauth_provider_url,
-                  :api_base_url
+    attr_accessor :client_id,
+      :redirect_uri,
+      :authorization_url,
+      :oauth_provider_url,
+      :api_base_url
 
     def initialize(**opts)
       @client_id = opts[:client_id]

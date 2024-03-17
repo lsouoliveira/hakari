@@ -26,6 +26,24 @@ RSpec.describe(Hakari::Api::Theme) do
     end
   end
 
+  describe "#pull" do
+    it "should return a Tempfile" do
+      client = Hakari::Api::Client.new(
+        base_url: "http://example.com",
+        access_token: "123",
+      )
+
+      theme = Hakari::Api::Theme.new(client)
+
+      stub_request(:get, "http://example.com/themes/123")
+        .to_return(status: 200, body: File.read("spec/fixtures/theme.zip"))
+
+      response = theme.pull("123")
+
+      expect(response).to(be_a(Tempfile))
+    end
+  end
+
   def build_theme(**opts)
     {
       id: opts[:id] || Faker::Number.number(digits: 10),
