@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hakari
   module Api
     class Collection
@@ -14,9 +16,9 @@ module Hakari
         json = JSON.parse(response.body, symbolize_names: true)
         Collection.new(
           items: json.map(&object_class.method(:new)),
-            total_pages: response.headers["X-Total"].to_i,
-            current_page: response.headers["X-Page"].to_i,
-            total_count: response.headers["X-Total-Count"].to_i
+          total_pages: response.headers["X-Total"].to_i,
+          current_page: response.headers["X-Page"].to_i,
+          total_count: response.headers["X-Total-Count"].to_i,
         )
       end
     end

@@ -61,8 +61,8 @@ module Hakari
             progress_proc,
           )
           Hakari::Themes::ThemeExtractor.new(
-            archive, 
-            @destination_path
+            archive,
+            @destination_path,
           ).extract
         end
 

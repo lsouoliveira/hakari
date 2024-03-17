@@ -15,7 +15,7 @@ module Hakari
 
         def wait_for_keypress
           puts "Press enter to open the browser to login or press #{"Ctrl+C".colorize(:yellow)} to cancel"
-          STDIN.gets
+          $stdin.gets
         end
 
         def authenticate
