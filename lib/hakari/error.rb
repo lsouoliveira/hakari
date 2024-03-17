@@ -5,4 +5,6 @@ module Hakari
   class MissingAuthorizationCodeError < Error; end
   class FailedToExchangeAuthorizationCodeError < Error; end
   class FailedToRetrieveUserTokenInfoError < Error; end
+
+  class RequestError < Error; end
 end
