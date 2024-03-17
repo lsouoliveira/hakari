@@ -28,6 +28,7 @@ require_relative "hakari/api/collection"
 require_relative "hakari/api/object"
 require_relative "hakari/api/resources/themes"
 require_relative "hakari/api/objects/theme"
+require_relative "hakari/themes/theme_extractor"
 
 module Hakari
   class << self
