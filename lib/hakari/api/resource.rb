@@ -18,6 +18,10 @@ module Hakari
       def get(path, options = {}, &block)
         perform_request(:get, path, options, &block)
       end
+
+      def post(path, options = {}, &block)
+        perform_request(:post, path, options, &block)
+      end
     end
   end
 end
