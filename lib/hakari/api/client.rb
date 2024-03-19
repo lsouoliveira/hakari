@@ -18,11 +18,16 @@ module Hakari
 
       def connection
         @_connection ||= Faraday.new(url: @base_url) do |faraday|
-          faraday.request(:url_encoded)
-          faraday.adapter(Faraday.default_adapter)
           faraday.use(Faraday::Response::RaiseError)
+
+          faraday.request(:url_encoded)
+
+          faraday.response(:json, content_type: "application/json")
+
           faraday.headers["Content-Type"] = "application/json"
           faraday.headers["Authorization"] = "Bearer #{@access_token}"
+
+          faraday.adapter(Faraday.default_adapter)
         end
       end
     end

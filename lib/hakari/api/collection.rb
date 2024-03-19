@@ -13,9 +13,8 @@ module Hakari
       end
 
       def self.from_response(response, object_class)
-        json = JSON.parse(response.body, symbolize_names: true)
         Collection.new(
-          items: json.map(&object_class.method(:new)),
+          items: response.body.map { |item| object_class.new(item) },
           total_pages: response.headers["X-Total"].to_i,
           current_page: response.headers["X-Page"].to_i,
           total_count: response.headers["X-Total-Count"].to_i,

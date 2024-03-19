@@ -4,25 +4,12 @@ require "spec_helper"
 
 RSpec.describe(Hakari::Api::Theme) do
   describe "#list" do
-    it "should return a list of themes with 2 items" do
-      client = Hakari::Api::Client.new(
-        base_url: "http://example.com",
-        access_token: "123",
-      )
-      theme = Hakari::Api::Themes.new(client)
-      dummy_response = [
-        build_theme(name: "theme1"),
-        build_theme(name: "theme2"),
-      ]
+    it "should return a list of themes with 4 items" do
+      themes = Hakari::Api::Themes.new(api_client)
 
-      puts dummy_response.to_json
+      stub_api_request(:get, "themes", stub_response("themes/list.json"))
 
-      stub_request(:get, "http://example.com/themes")
-        .to_return(status: 200, body: dummy_response.to_json)
-
-      response = theme.list
-
-      expect(response.items.length).to(eq(2))
+      expect(themes.list.items.size).to(eq(4))
     end
   end
 

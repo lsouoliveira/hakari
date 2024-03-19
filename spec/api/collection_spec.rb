@@ -13,7 +13,7 @@ RSpec.describe(Hakari::Api::Collection) do
       }
       dummy_response = double(
         "response",
-        body: data.to_json,
+        body: data,
         headers: headers,
       )
 
