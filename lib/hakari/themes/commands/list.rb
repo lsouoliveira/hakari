@@ -5,7 +5,7 @@ module Hakari
     module Commands
       class List < Hakari::Command
         def run
-          themes = Hakari.api_client.themes.list
+          themes = Hakari.api_client.themes.list(per_page: 1000)
 
           output_title
           output_themes(themes)

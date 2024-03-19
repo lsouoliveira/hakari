@@ -3,8 +3,8 @@
 module Hakari
   module Api
     class Themes < Resource
-      def list
-        response = get("themes")
+      def list(**params)
+        response = get("themes", params)
         Collection.from_response(response, Theme)
       end
 
