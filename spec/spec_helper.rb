@@ -3,6 +3,7 @@
 require "hakari"
 require "webmock/rspec"
 require "faker"
+require "support/api_helper"
 
 # Prevent the tests from making HTTP requests to external services
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -17,4 +18,6 @@ RSpec.configure do |config|
   config.expect_with(:rspec) do |c|
     c.syntax = :expect
   end
+
+  config.include(ApiHelper)
 end
