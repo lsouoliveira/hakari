@@ -21,6 +21,7 @@ module Hakari
           faraday.use(Faraday::Response::RaiseError)
 
           faraday.request(:url_encoded)
+          faraday.request(:multipart)
 
           faraday.response(:json, content_type: "application/json")
 
