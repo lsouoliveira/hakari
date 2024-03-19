@@ -18,6 +18,16 @@ module Hakari
         Theme.new(response.body)
       end
 
+      def patch(**params)
+        payload = deep_compact(build_payload(**params))
+
+        response = patch_request("themes/#{params[:id]}", payload) do |request|
+          request.headers["Content-Type"] = "multipart/form-data"
+        end
+
+        Theme.new(response.body)
+      end
+
       def pull(theme_id, progress_proc = nil)
         path = "#{client.base_url}/themes/#{theme_id}"
         headers = {
@@ -56,6 +66,14 @@ module Hakari
         end
 
         payload
+      end
+
+      def deep_compact(hash)
+        hash.each_with_object({}) do |(k, v), memo|
+          next if v.nil?
+
+          memo[k] = v.is_a?(Hash) ? deep_compact(v) : v
+        end
       end
 
       def calculate_progress(size, transferred)

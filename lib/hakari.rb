@@ -30,6 +30,7 @@ require_relative "hakari/api/object"
 require_relative "hakari/api/resources/themes"
 require_relative "hakari/api/objects/theme"
 require_relative "hakari/themes/theme_extractor"
+require_relative "hakari/themes/syncer"
 require_relative "hakari/themes/packer"
 
 module Hakari

@@ -31,6 +31,25 @@ RSpec.describe(Hakari::Api::Theme) do
     end
   end
 
+  describe "#patch" do
+    it "should return a theme" do
+      themes = Hakari::Api::Themes.new(api_client)
+      payload = {
+        id: Faker::Number.number(digits: 10),
+        name: Faker::Name.name,
+        description: Faker::Lorem.sentence,
+        version: Faker::App.version,
+        file: File.open("spec/fixtures/theme.zip"),
+      }
+
+      stub_api_request(:patch, "themes/#{payload[:id]}", stub_response("themes/create.json"))
+
+      response = themes.patch(**payload)
+
+      expect(response).to(be_a(Hakari::Api::Theme))
+    end
+  end
+
   describe "#pull" do
     it "should return a Tempfile" do
       client = Hakari::Api::Client.new(
