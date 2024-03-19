@@ -22,6 +22,10 @@ module Hakari
       def post(path, options = {}, &block)
         perform_request(:post, path, options, &block)
       end
+
+      def patch_request(path, options = {}, &block)
+        perform_request(:patch, path, options, &block)
+      end
     end
   end
 end

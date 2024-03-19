@@ -73,4 +73,22 @@ RSpec.describe(Hakari::Api::Resource) do
       expect(response).to(eq(dummy_response))
     end
   end
+
+  describe "#patch_request" do
+    it "should perform a PATCH request" do
+      client = Hakari::Api::Client.new(
+        base_url: "http://example.com",
+        access_token: "123",
+      )
+      resource = Hakari::Api::Resource.new(client)
+
+      dummy_response = double("response", body: "{}")
+
+      allow(resource).to(receive(:perform_request).and_return(dummy_response))
+
+      response = resource.patch_request("/path")
+
+      expect(response).to(eq(dummy_response))
+    end
+  end
 end
