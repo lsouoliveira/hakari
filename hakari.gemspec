@@ -37,8 +37,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency("faraday", "~> 2.9.0")
   spec.add_dependency("faraday-multipart", "~> 1.0.4")
   spec.add_dependency("launchy", "~> 3.0")
+  spec.add_dependency("listen", "~> 3.9.0")
   spec.add_dependency("rubyzip", "~> 2.3.2")
   spec.add_dependency("thor", "~> 1.3.1")
+  spec.add_dependency("tty-box", "~> 0.7.0")
+  spec.add_dependency("tty-link", "~> 0.1.1")
   spec.add_dependency("tty-progressbar", "~> 0.18.2")
   spec.add_dependency("tty-prompt", "~> 0.23.1")
 end
