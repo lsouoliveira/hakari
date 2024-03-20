@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "dotenv"
 require "down"
 require "zip"
 require "tty-progressbar"
@@ -62,7 +63,9 @@ module Hakari
     end
 
     def storage
-      @_storage ||= Storage.new
+      @_storage ||= Storage.new(
+        test? ? Tempfile.new("hakari").path : File.join(Dir.home, ".hakari.json"),
+      )
     end
 
     def storage=(storage)
@@ -86,7 +89,16 @@ module Hakari
       credentials = storage.retrieve("credentials")
       Hakari.access_token = credentials["access_token"] if credentials
     end
+
+    def test?
+      ENV["HAKARI_ENV"] == "test"
+    end
+
+    def load_environment
+      Dotenv.load(".env", ".env.#{ENV["HAKARI_ENV"]}", ".env.#{ENV["HAKARI_ENV"]}.local")
+    end
   end
 end
 
+Hakari.load_environment
 Hakari.init

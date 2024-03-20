@@ -2,7 +2,7 @@
 
 module Hakari
   class Storage
-    def initialize(store_path = File.expand_path("~/.hakari.json"))
+    def initialize(store_path)
       @store_path = store_path
     end
 
