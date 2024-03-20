@@ -24,13 +24,6 @@ jobs:
       matrix:
         ruby-version: ['3.0']
 
-    env:
-      HAKARI_CLIENT_ID: client_id
-      HAKARI_AUTHORIZATION_URL: http://localhost:3000/oauth/authorize
-      HAKARI_REDIRECT_URI: http://localhost:9480
-      HAKARI_OAUTH_PROVIDER_URL: http://localhost:3000
-      HAKARI_API_BASE_URL: http://localhost:3000/store_api/v1
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
