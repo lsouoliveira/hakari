@@ -74,11 +74,16 @@ module Hakari
           packer = Hakari::Themes::Packer.new(@source_path)
           package = packer.pack
 
+          puts __dir__ + "/../../assets/640x480.jpg"
+
           theme = Hakari.api_client.themes.create(
             name: "Development Theme #{SecureRandom.hex(4)}",
             description: "A theme for development",
             version: "1.0.0",
             file: package,
+            thumbnail: File.open(__dir__ + "/../../assets/640x480.jpg"),
+            demo: File.open(__dir__ + "/../../assets/1920x1080.jpg"),
+            mobile_demo: File.open(__dir__ + "/../../assets/320x240.jpg"),
           )
 
           Hakari.storage.store("development_theme_id", theme.id)

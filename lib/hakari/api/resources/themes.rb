@@ -3,6 +3,9 @@
 module Hakari
   module Api
     class Themes < Resource
+      DEFAULT_MIME_TYPE = "application/octet-stream"
+      FILES = [:file, :thumbnail, :demo, :mobile_demo].freeze
+
       def list(**params)
         response = get("themes", params)
         Collection.from_response(response, Theme)
@@ -54,14 +57,15 @@ module Hakari
             name: params[:name],
             description: params[:description],
             version: params[:version],
-            file: Faraday::Multipart::FilePart.new(params[:file], "application/zip"),
           },
         }
 
-        if params[:thumbnail]
-          payload[:theme][:thumbnail] = Faraday::MultiPart::FilePart.new(
-            params[:thumbnail],
-            "image/png",
+        FILES.each do |file|
+          next unless params[file]
+
+          payload[:theme][file] = Faraday::Multipart::FilePart.new(
+            params[file],
+            DEFAULT_MIME_TYPE,
           )
         end
 

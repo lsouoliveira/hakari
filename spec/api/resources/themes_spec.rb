@@ -21,6 +21,9 @@ RSpec.describe(Hakari::Api::Theme) do
         description: Faker::Lorem.sentence,
         version: Faker::App.version,
         file: File.open("spec/fixtures/theme.zip"),
+        thumbnail: File.open("spec/fixtures/640x480.jpg"),
+        demo: File.open("spec/fixtures/1920x1080.jpg"),
+        mobile_demo: File.open("spec/fixtures/320x240.jpg"),
       }
 
       stub_api_request(:post, "themes", stub_response("themes/create.json"))
